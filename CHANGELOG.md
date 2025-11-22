@@ -1,3 +1,10 @@
+## [0.1.1](https://github.com/tristan23612/revanced-patches-package/compare/v0.1.0...v0.1.1) (2025-11-22)
+
+
+### Bug Fixes
+
+* build.gradle.kts ([d990f70](https://github.com/tristan23612/revanced-patches-package/commit/d990f70beddd5be3d05402b4d5c968d549694262))
+
 # [0.1.0](https://github.com/tristan23612/revanced-patches-package/compare/v0.0.1...v0.1.0) (2025-11-22)
 
 
