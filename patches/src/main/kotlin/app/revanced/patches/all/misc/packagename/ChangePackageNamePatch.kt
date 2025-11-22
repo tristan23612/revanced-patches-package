@@ -29,7 +29,7 @@ fun setOrGetFallbackPackageName(fallbackPackageName: String): String {
 val changePackageNamePatch = resourcePatch(
     name = "Change package name",
     description = "Appends \".revanced\" to the package name by default. " +
-        "Changing the package name of the app can lead to unexpected issues.",
+            "Changing the package name of the app can lead to unexpected issues.",
     use = false,
 ) {
     packageNameOption = stringOption(
@@ -48,7 +48,7 @@ val changePackageNamePatch = resourcePatch(
         default = false,
         title = "Update permissions",
         description = "Update compatibility receiver permissions. " +
-            "Enabling this can fix installation errors, but this can also break features in certain apps.",
+                "Enabling this can fix installation errors, but this can also break features in certain apps.",
     )
 
     val updateProviders by booleanOption(
@@ -56,7 +56,7 @@ val changePackageNamePatch = resourcePatch(
         default = false,
         title = "Update providers",
         description = "Update provider names declared by the app. " +
-            "Enabling this can fix installation errors, but this can also break features in certain apps.",
+                "Enabling this can fix installation errors, but this can also break features in certain apps.",
     )
 
     finalize {
@@ -98,14 +98,12 @@ val changePackageNamePatch = resourcePatch(
                 val permissions = manifest.getElementsByTagName("permission").asSequence()
                 val usesPermissions = manifest.getElementsByTagName("uses-permission").asSequence()
 
+                val receiverNotExported = "DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+
                 (permissions + usesPermissions)
                     .map { it as Element }
-                    .forEach {
-                        val name = it.getAttribute("android:name")
-                        if (name.startsWith("$packageName.")) {
-                            it.setAttribute("android:name", name.replace(packageName, newPackageName))
-                        }
-                    }
+                    .filter { it.getAttribute("android:name") == "$packageName.$receiverNotExported" }
+                    .forEach { it.setAttribute("android:name", "$newPackageName.$receiverNotExported") }
             }
 
             if (updateProviders == true) {
