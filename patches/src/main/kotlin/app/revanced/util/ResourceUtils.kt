@@ -16,6 +16,18 @@ import java.nio.file.StandardCopyOption
 
 private val classLoader = object {}.javaClass.classLoader
 
+/**
+ * Returns a sequence for all child nodes.
+ */
+fun NodeList.asSequence() = (0 until this.length).asSequence().map { this.item(it) }
+
+/**
+ * Returns a sequence for all child nodes.
+ */
+@Suppress("UNCHECKED_CAST")
+fun Node.childElementsSequence() =
+    this.childNodes.asSequence().filter { it.nodeType == Node.ELEMENT_NODE } as Sequence<Element>
+
 @Suppress("UNCHECKED_CAST")
 fun Patch<*>.getStringOptionValue(key: String) =
     options[key] as Option<String>
