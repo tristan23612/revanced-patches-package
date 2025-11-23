@@ -1,3 +1,10 @@
+## [0.1.3](https://github.com/tristan23612/revanced-patches-build/compare/v0.1.2...v0.1.3) (2025-11-23)
+
+
+### Bug Fixes
+
+* Rename project to revanced-patches-build ([d67eb97](https://github.com/tristan23612/revanced-patches-build/commit/d67eb9715355c3a6f0b3418b258598b64b175170))
+
 ## [0.1.2](https://github.com/tristan23612/revanced-patches-build/compare/v0.1.1...v0.1.2) (2025-11-22)
 
 
